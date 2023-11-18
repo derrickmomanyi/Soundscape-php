@@ -77,7 +77,6 @@ class User extends Authenticatable implements JWTSubject
     {
         $logOptions = LogOptions::defaults();
         $logOptions->logName = 'Users'; // Set the custom log name
-        // $logOptions->ignoreChangedAttributes = ['last_login_at', 'updated_at'];
         $logOptions->logOnlyDirty = true;
         $logOptions->logAttributes = ['*'];       
         return $logOptions;
