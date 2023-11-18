@@ -17,7 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->timestamp('password_changed_at')->nullable();
+            $table->rememberToken();                    
+            $table->datetime('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->timestamp('suspended_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
