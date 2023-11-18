@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 /**
  * Class USerService.
  */
-class USerService
+class UserService
 {
      /**
      * Creating a user account

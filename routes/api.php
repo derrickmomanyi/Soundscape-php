@@ -25,11 +25,9 @@ Route::group(['middleware' => 'api'], function () {
          */        
         Route::post('register', [AuthController::class, 'register']);
         Route::post('login', [AuthController::class, 'login']);
-        Route::post('logout', [AuthController::class, 'logout']);
-        Route::post('refresh', [AuthController::class, 'refresh']);
-        Route::post('me', [AuthController::class, 'me']);
-        Route::put('me', [AuthController::class, 'updateProfileInformation']);
-        Route::post('change-password', [AuthController::class, 'changePassword']);
+        Route::post('logout', [AuthController::class, 'logout']);      
+        Route::post('me', [AuthController::class, 'me']);        
+       
 
         // /**
         //  * Password Resets APIs

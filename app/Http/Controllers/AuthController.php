@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Services\ApiResponsesService;
 use App\Services\ResponseMessagesService;
-use App\Services\USerService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'register', 'resetPasswordToken', 'refresh',
-            'getRolesApi']]);
+            'getRolesApi', 'me']]);
     }
 
     /**
@@ -39,7 +39,7 @@ class AuthController extends Controller
         return ApiResponsesService::error($validator->errors()->all(), "Please fix all the errors before proceeding.");
        }
 
-       $user_service = new USerService();
+       $user_service = new UserService();
 
        try{
           //user creation
@@ -91,4 +91,22 @@ class AuthController extends Controller
             return ApiResponsesService::successFetch($token_collection->merge($user),ResponseMessagesService::LOGIN_SUCCESSFUL);
         }
      }
+
+     public function me()
+        {
+            
+            if (auth()->guard('api')->user()){
+                $user_details = User::find(auth()->guard('api')->user()->id);
+                return ApiResponsesService::successFetch($user_details, ResponseMessagesService::SUCCESS_FETCH_USER_DATA);
+            } else {
+                return ApiResponsesService::notauthenticated();
+            }
+        }
+
+        public function logout()
+        {
+            auth()->guard('api')->logout();
+            return ApiResponsesService::successFetch(null, ResponseMessagesService::LOGOUT_SUCCESSFUL);
+            
+        }
 }
