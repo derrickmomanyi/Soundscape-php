@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->integer('year');
+            $table->string('image');
+            $table->string('genre');
+            $table->string('label');
+            $table->integer('rating');
+            $table->foreignId('artist_id')->constrained()->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

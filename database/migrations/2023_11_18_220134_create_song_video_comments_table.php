@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('song_video_comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('song_video_id')->constrained()->cascadeOnDelete();
+            $table->string('body');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

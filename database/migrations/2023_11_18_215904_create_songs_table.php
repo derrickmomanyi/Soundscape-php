@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('songs', function (Blueprint $table) {
-            $table->id();
+            $table->id();            
             $table->string('title');
             $table->string('year');
             $table->string('featuring');
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('about');
             $table->string('music_video');
+            $table->foreignId('artist_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('song_id')->constrained()->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });
