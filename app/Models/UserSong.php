@@ -12,6 +12,14 @@ class UserSong extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
 
+    protected $hidden = [        
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'user_id',
+        'song_id'
+    ];
+
     public function getActivitylogOptions(): LogOptions
     {
         $logOptions = LogOptions::defaults();

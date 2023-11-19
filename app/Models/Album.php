@@ -12,6 +12,16 @@ class Album extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
 
+    protected $fillable = [
+        'title',
+        'year',
+        'image',
+        'genre',
+        'label',
+        'rating',
+        'artist_id', // Assuming this is the foreign key to the Artist model
+    ];
+
     public function getActivitylogOptions(): LogOptions
     {
         $logOptions = LogOptions::defaults();

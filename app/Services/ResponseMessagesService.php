@@ -13,6 +13,7 @@ class ResponseMessagesService
     const SUCCESS_FETCH_USER_DATA = "Successfully fetched user data.";
     const LOGOUT_SUCCESSFUL = "Successfully logged out.";
     const TOKEN_REFRESH_SUCCESSFUL = "You have successfully refreshed your login session.";
+    const VALIDATION_ERRORS = "Please fix all the validation errors.";
 
 
 }

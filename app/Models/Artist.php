@@ -12,6 +12,8 @@ class Artist extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
 
+    protected $fillable = ['name', 'image', 'bio'];
+
     public function getActivitylogOptions(): LogOptions
     {
         $logOptions = LogOptions::defaults();

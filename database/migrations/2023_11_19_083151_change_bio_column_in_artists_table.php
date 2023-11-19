@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_songs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('song_id')->constrained()->cascadeOnDelete();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('artists', function (Blueprint $table) {
+            $table->text('bio')->change();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_songs');
+        Schema::table('artists', function (Blueprint $table) {           
+            $table->string('bio')->change();
+        });
     }
 };

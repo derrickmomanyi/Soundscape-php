@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('song_video_comments', function (Blueprint $table) {
+        Schema::create('artists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('song_video_id')->constrained()->cascadeOnDelete();
-            $table->string('body');
+            $table->string('name');
+            $table->string('image');
+            $table->text('bio');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamps();           
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('song_video_comments');
+        Schema::dropIfExists('artists');
     }
 };

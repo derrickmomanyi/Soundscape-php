@@ -12,6 +12,27 @@ class Song extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
 
+    protected $fillable = [
+        'title',
+        'year',
+        'featuring',
+        'produced_by',
+        'written_by',
+        'image',
+        'about',
+        'music_video',
+        'artist_id',
+        'album_id',
+    ];
+
+    protected $hidden = [              
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'artist_id',
+        'album_id'
+    ];
+
     public function getActivitylogOptions(): LogOptions
     {
         $logOptions = LogOptions::defaults();
